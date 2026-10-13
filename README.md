@@ -124,3 +124,31 @@ public class NameSorter implements Comparator {
 
 Зверніть увагу, що спочатку ми повинні переконатися, що обидва об'єкти є об'єктами класу `Student`, після чого робимо низхідне перетворення.
 У цьому випадку ми порівнюємо два поля name у двох об'єктів класу `Student`. Так як це тип `String`, нам не потрібно порівнювати рядки «вручну», ми просто можемо скористатися методом `compareTo()`, який є у будь-якого об'єкта класу `String`.
+
+## Запуск виконаної роботи
+
+Потрібні JDK 17 або новіший та Maven. В IntelliJ IDEA відкрийте головний `pom.xml` як Maven-проєкт.
+
+Зібрати всі модулі й запустити тести:
+
+```bash
+mvn clean verify
+```
+
+Завдання 1–4, консольний приклад:
+
+```bash
+java -cp basics/target/classes org.example.Main
+```
+
+Завдання 5, програма Draw:
+
+```bash
+java -cp draw/target/classes ua.opnu.Main
+```
+
+Завдання 6, список студентів:
+
+```bash
+mvn -f list/pom.xml javafx:run
+```
