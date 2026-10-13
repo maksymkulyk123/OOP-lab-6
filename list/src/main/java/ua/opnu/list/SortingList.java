@@ -10,13 +10,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.Comparator;
 
 /*
  * Цей клас успадковується від стандартного класу Application.
@@ -116,7 +114,7 @@ public class SortingList extends Application {
         sortByMarkButton.setMaxWidth(Double.MAX_VALUE);
 
         // Обробка натискання кнопки за допомогою об'єкта анонімного класу,
-        // реалізує інтерфейс Comparable
+        // який викликає сортування з відповідним компаратором
 
         final boolean[] order = {true};
 
@@ -128,9 +126,23 @@ public class SortingList extends Application {
             }
         });
 
-        // TODO: Обробка натискання на кнопку "Сортувати за прізвищем"
+        final boolean[] lastNameOrder = {true};
+        sortByLastNameButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                students.sort(new LastNameSorter(lastNameOrder[0]));
+                lastNameOrder[0] = !lastNameOrder[0];
+            }
+        });
 
-        // TODO: Обробка натискання на кнопку "Сортувати за оцінкою"
+        final boolean[] markOrder = {true};
+        sortByMarkButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                students.sort(new MarkSorter(markOrder[0]));
+                markOrder[0] = !markOrder[0];
+            }
+        });
 
         // Створюємо горизонтальний ряд
         HBox hb = new HBox();
